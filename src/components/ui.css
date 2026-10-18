@@ -1,0 +1,199 @@
+/* ---------- line reveal ---------- */
+
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+
+.line__inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+.bw {
+  display: inline-block;
+  will-change: transform, filter, opacity;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.6;
+  white-space: nowrap;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    color 0.5s var(--ease),
+    border-color 0.5s var(--ease),
+    background-color 0.5s var(--ease);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  transform: translateY(101%);
+  transition: transform 0.6s var(--ease);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: translateY(0);
+}
+
+.btn__roll {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 1.6em;
+}
+
+.btn__roll > span {
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+
+.btn__roll > span:last-child {
+  position: absolute;
+  inset: 100% 0 auto;
+}
+
+.btn:hover .btn__roll > span,
+.btn:focus-visible .btn__roll > span {
+  transform: translateY(-100%);
+}
+
+.btn--outline {
+  border: 1px solid var(--ink);
+  color: var(--ink);
+}
+.btn--outline::before {
+  background: var(--ink);
+}
+.btn--outline:hover {
+  color: #fff;
+}
+
+.btn--accent {
+  background: var(--accent);
+  color: #fff;
+}
+.btn--accent::before {
+  background: var(--ink);
+}
+
+.btn--dark {
+  background: var(--ink);
+  color: #fff;
+}
+.btn--dark::before {
+  background: var(--accent);
+}
+
+.btn--light {
+  background: #fff;
+  color: var(--ink);
+}
+.btn--light::before {
+  background: var(--ink);
+}
+.btn--light:hover {
+  color: #fff;
+}
+
+.btn--outline-light {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  color: #fff;
+}
+.btn--outline-light::before {
+  background: #fff;
+}
+.btn--outline-light:hover {
+  color: var(--ink);
+}
+
+.arrow {
+  display: inline-block;
+  flex: none;
+  transition: transform 0.4s var(--ease);
+}
+
+/* ---------- rolling number ---------- */
+
+.roll {
+  display: inline-flex;
+  line-height: 1;
+}
+
+.roll__digit {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+}
+
+.roll__strip {
+  display: flex;
+  flex-direction: column;
+}
+
+.roll__strip > span {
+  display: block;
+  height: 1em;
+  line-height: 1;
+}
+
+/* ---------- giant blurred text ---------- */
+
+.giant {
+  position: relative;
+  width: 100%;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.82;
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+}
+
+.giant__sharp,
+.giant__blur {
+  display: block;
+}
+
+.giant__sharp {
+  background: linear-gradient(180deg, #1a1a1a 0%, #2b2b2b 30%, rgba(60, 60, 60, 0.75) 55%, rgba(90, 90, 90, 0) 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-mask-image: linear-gradient(180deg, #000 35%, transparent 80%);
+  mask-image: linear-gradient(180deg, #000 35%, transparent 80%);
+}
+
+/* padded box so the blur can spread without the mask cropping it */
+.giant__blur {
+  position: absolute;
+  inset: -0.3em -0.15em;
+  padding: 0.3em 0.15em;
+  color: rgba(26, 26, 26, 0.55);
+  filter: blur(0.055em);
+  transform: translateY(0.06em);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 38%, #000 56%, rgba(0, 0, 0, 0.45) 78%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, transparent 38%, #000 56%, rgba(0, 0, 0, 0.45) 78%, transparent 100%);
+}

@@ -1,0 +1,21 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+}
+
+.preloader__mark {
+  display: flex;
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.preloader__mark span {
+  display: inline-block;
+}

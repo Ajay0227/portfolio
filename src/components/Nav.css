@@ -1,0 +1,138 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: 96px;
+  color: var(--ink);
+  transition: color 0.45s var(--ease);
+  pointer-events: none;
+}
+
+.nav--dark {
+  color: #fff;
+}
+
+.nav__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  pointer-events: none;
+}
+
+.nav__bar > * {
+  pointer-events: auto;
+}
+
+.nav__logo {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.8;
+}
+
+/* progressive blur: stacked backdrop blurs, each masked to a narrower top band */
+.nav__blur {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 132px;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.nav.is-open .nav__blur {
+  opacity: 0;
+}
+
+.nav__blur > div {
+  position: absolute;
+  inset: 0;
+}
+
+.nav__blur > div:nth-child(1) {
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+}
+.nav__blur > div:nth-child(2) {
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 85%);
+}
+.nav__blur > div:nth-child(3) {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 72%);
+}
+.nav__blur > div:nth-child(4) {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 32%, transparent 60%);
+}
+.nav__blur > div:nth-child(5) {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 48%);
+}
+.nav__blur > div:nth-child(6) {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 34%);
+}
+
+/* hamburger: long top line, short bottom line → X */
+.burger {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  margin-right: -2px;
+}
+
+.burger span {
+  position: absolute;
+  right: 0;
+  height: 1.5px;
+  background: currentColor;
+  transition:
+    transform 0.6s var(--ease),
+    width 0.6s var(--ease),
+    top 0.6s var(--ease);
+}
+
+.burger span:first-child {
+  top: 6px;
+  width: 48px;
+}
+
+.burger span:last-child {
+  top: 16px;
+  width: 28px;
+}
+
+.burger:hover span:last-child {
+  width: 48px;
+}
+
+.nav.is-open .burger span {
+  top: 11px;
+  width: 36px;
+  right: 6px;
+}
+
+.nav.is-open .burger span:first-child {
+  transform: rotate(30deg);
+}
+
+.nav.is-open .burger span:last-child {
+  transform: rotate(-30deg);
+}
+
+/* full-screen menu */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  overflow-y: auto;
+  background: var(--bg);
+}

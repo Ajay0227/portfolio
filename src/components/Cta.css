@@ -1,0 +1,117 @@
+.cta {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--accent);
+  color: #fff;
+  isolation: isolate;
+}
+
+/* duotone cut-out: grayscale portrait multiplied into the orange, standing on the bottom edge */
+.cta__img {
+  position: absolute;
+  right: 2%;
+  /* sink a little so the cut-out's curved bottom edge sits below the section */
+  bottom: -3%;
+  z-index: -1;
+  width: min(54vw, 860px);
+  aspect-ratio: 1348 / 1167;
+  max-height: 88%;
+  mix-blend-mode: multiply;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.cta__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  filter: grayscale(1) contrast(1.3) brightness(0.95);
+}
+
+.cta__inner {
+  display: flex;
+  flex-direction: column;
+  min-height: inherit;
+  padding-block: 96px;
+}
+
+.cta__title {
+  margin-top: 40px;
+  font-size: var(--fs-giant-title);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.cta__title .line:first-child {
+  color: var(--peach);
+}
+
+.cta__lead {
+  max-width: 640px;
+  margin-top: 40px;
+  font-size: var(--fs-lead);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--peach);
+}
+
+.cta__lead strong {
+  color: #fff;
+  font-weight: inherit;
+}
+
+.cta__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 96px;
+}
+
+.cta__aside {
+  padding-left: 120px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--peach);
+  white-space: pre-line;
+}
+
+.cta__aside strong {
+  color: #fff;
+  font-weight: 500;
+}
+
+.cta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 809.98px) {
+  .cta__img {
+    right: -8%;
+    width: 108%;
+    max-height: 62%;
+    opacity: 0.5;
+  }
+  .cta__inner {
+    padding-block: 88px 56px;
+  }
+  .cta__title {
+    margin-top: 0;
+  }
+  .cta__row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .cta__aside {
+    padding-left: 0;
+  }
+}
