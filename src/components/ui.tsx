@@ -175,6 +175,8 @@ export function RollingNumber({ value, className }: { value: string; className?:
       {value.split('').map((c, i) =>
         /\d/.test(c) ? (
           <span className="roll__digit" key={i} aria-hidden="true">
+            {/* sizes the column to its final digit, so a "1" isn't as wide as a "0" */}
+            <span className="roll__sizer">{c}</span>
             <motion.span
               className="roll__strip"
               initial={{ y: '0%' }}

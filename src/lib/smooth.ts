@@ -18,6 +18,8 @@ export const smooth = {
     const target = typeof to === 'string' ? (to === '#top' ? 0 : document.querySelector<HTMLElement>(to)) : to
     if (target === null) return
     if (lenis) {
+      // jumps happen right after a page change, before lenis has re-measured the new page height
+      if (opts.immediate) lenis.resize()
       lenis.scrollTo(target, { offset: NAV_OFFSET, immediate: opts.immediate, duration: 1.6, force: true })
       return
     }

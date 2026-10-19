@@ -2,6 +2,7 @@ import { motion } from 'motion/react'
 import type { MouseEvent } from 'react'
 import { footer, links } from '../data/content'
 import { aboutPanel } from '../lib/aboutPanel'
+import { useRoute } from '../lib/router'
 import { Marked } from '../lib/text'
 import { ArrowIcon } from './ui'
 import { EASE } from '../lib/ease'
@@ -17,6 +18,8 @@ type Props = {
 }
 
 export function ContactBlock({ onNavigate, mode, onOpenAbout }: Props) {
+  // on a case study page, section links lead back to the home page
+  const base = useRoute().path === '/' ? '' : '/'
   let i = 0
   const item = () => {
     const delay = 0.15 + i++ * 0.04
@@ -58,7 +61,7 @@ export function ContactBlock({ onNavigate, mode, onOpenAbout }: Props) {
           <ul>
             {footer.menu.map((l) => (
               <motion.li key={l.href} {...item()}>
-                <a className="contact__link" href={l.href} onClick={(e) => onNavigate?.(e, l.href)}>
+                <a className="contact__link" href={base + l.href} onClick={(e) => onNavigate?.(e, base + l.href)}>
                   {l.label} <ArrowIcon />
                 </a>
               </motion.li>

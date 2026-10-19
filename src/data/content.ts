@@ -43,7 +43,7 @@ export const about = {
     {
       value: '3+',
       label: 'Years',
-      note: '3.7 Actually! Yes, I could round it up to 4, but hey! honesty builds trust (and also makes me sound oddly precise).',
+      note: '3.8 Actually! Yes, I could round it up to 4, but hey! honesty builds trust (and also makes me sound oddly precise).',
     },
     {
       value: '100+',
@@ -72,6 +72,7 @@ export type Project = {
   tags: string[]
   client: string
   year?: string
+  /** In-site case study page (see caseStudies.ts). */
   href: string
   screen: string
   video?: string
@@ -93,7 +94,7 @@ export const projects: Project[] = [
     tags: ['HRMS', 'Redesign', 'User research', 'Web Application', 'Mobile App'],
     client: 'Budgie',
     year: '2023',
-    href: 'https://ajay02.framer.website/leave_management',
+    href: '/work/leave-module',
     screen: img('leave-cover.png'),
     device: 'laptop',
     shots: [img('leave-1.png'), img('leave-2.png'), img('leave-3.png')],
@@ -104,7 +105,7 @@ export const projects: Project[] = [
     subtitle: 'Scanning Their Way to Success',
     tags: ['Web & app design', 'User testing', 'Prototyping', 'QR Menu'],
     client: 'CK’s Bakery',
-    href: 'https://ajay02.framer.website/ck_bakery',
+    href: '/work/ck-bakery',
     screen: img('bakery-cover.webp'),
     device: 'float',
     shots: [img('bakery-1.png'), img('bakery-2.png'), img('bakery-3.png')],
@@ -115,7 +116,7 @@ export const projects: Project[] = [
     subtitle: 'Revolutionizing Business Insights with LLMs',
     tags: ['Ai', 'Custom Ai', 'Product Design'],
     client: 'Orange AI',
-    href: 'https://ajay02.framer.website/orange_ai',
+    href: '/work/orange-ai',
     screen: img('orange-cover.jpg'),
     video: 'https://framerusercontent.com/assets/DEJ9jfX8J54ICbmQpvw2dxhjtKs.mp4',
     device: 'laptop',
@@ -124,7 +125,7 @@ export const projects: Project[] = [
 ]
 
 export const lab = {
-  giant: 'AJAY LAB',
+  giant: 'MY TOUCH',
   hands: { left: img('hand-left.png'), right: img('hand-right.png') },
   phrases: [
     'Not just pretty, but purposeful.',

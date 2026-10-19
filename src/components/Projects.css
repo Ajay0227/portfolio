@@ -128,7 +128,7 @@
 }
 
 .panel__cta:hover .arrow {
-  transform: translate(2px, -2px);
+  transform: translateX(3px);
 }
 
 .panel__shots {
@@ -195,7 +195,7 @@
   object-position: top center;
 }
 
-.panel__device--laptop .screen img {
+.laptop .screen img {
   object-fit: contain;
   object-position: center;
   background: #f5f5f7;

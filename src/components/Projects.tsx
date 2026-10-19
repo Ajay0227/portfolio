@@ -22,6 +22,20 @@ function Screen({ project }: { project: Project }) {
   )
 }
 
+/** The project's cover in its laptop or floating frame (also the case study page's cover). */
+export function Device({ project }: { project: Project }) {
+  return project.device === 'laptop' ? (
+    <div className="laptop">
+      <span className="laptop__notch" aria-hidden="true" />
+      <Screen project={project} />
+    </div>
+  ) : (
+    <div className="floating">
+      <Screen project={project} />
+    </div>
+  )
+}
+
 function Panel({
   project,
   index,
@@ -58,20 +72,11 @@ function Panel({
         <div className="panel__bg" aria-hidden="true" />
 
         <motion.div className={`panel__device panel__device--${project.device}`} style={{ scale: deviceScale, y: deviceY }}>
-          {project.device === 'laptop' ? (
-            <div className="laptop">
-              <span className="laptop__notch" aria-hidden="true" />
-              <Screen project={project} />
-            </div>
-          ) : (
-            <div className="floating">
-              <Screen project={project} />
-            </div>
-          )}
+          <Device project={project} />
         </motion.div>
 
         <motion.div className="panel__info container" style={{ y: infoY, filter: infoFilter }}>
-          <a href={project.href} target="_blank" rel="noreferrer" className="panel__title-link" data-cursor="Case study ↗">
+          <a href={project.href} className="panel__title-link" data-cursor="Case study">
             <h3 id={`p-${project.slug}`} className="panel__title">
               {project.title}
             </h3>
@@ -86,8 +91,8 @@ function Panel({
             Client: <span>{project.client}</span>
           </p>
           {project.year && <p className="panel__year">{project.year}</p>}
-          <a className="panel__cta" href={project.href} target="_blank" rel="noreferrer" data-cursor="Case study ↗">
-            View Case Study <ArrowIcon diagonal />
+          <a className="panel__cta" href={project.href} data-cursor="Case study">
+            View Case Study <ArrowIcon />
           </a>
           <div className="panel__shots" aria-hidden="true">
             {project.shots.map((s) => (

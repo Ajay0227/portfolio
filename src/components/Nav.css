@@ -114,18 +114,19 @@
   width: 48px;
 }
 
+/* standard square X; right offset keeps the rotated lines flush with the edge */
 .nav.is-open .burger span {
   top: 11px;
-  width: 36px;
-  right: 6px;
+  width: 28px;
+  right: -4px;
 }
 
 .nav.is-open .burger span:first-child {
-  transform: rotate(30deg);
+  transform: rotate(45deg);
 }
 
 .nav.is-open .burger span:last-child {
-  transform: rotate(-30deg);
+  transform: rotate(-45deg);
 }
 
 /* full-screen menu */

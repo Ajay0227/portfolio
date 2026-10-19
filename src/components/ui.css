@@ -141,14 +141,26 @@
 }
 
 .roll__digit {
+  position: relative;
   display: inline-block;
   height: 1em;
-  overflow: hidden;
+  /* clip vertically only, so wider digits rolling past a narrow column aren't cut off */
+  clip-path: inset(0 -0.5em);
+}
+
+.roll__sizer {
+  display: block;
+  visibility: hidden;
 }
 
 .roll__strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .roll__strip > span {

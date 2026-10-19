@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { MouseEvent } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { brand } from '../data/content'
+import { useRoute } from '../lib/router'
 import { smooth } from '../lib/smooth'
 import { ContactBlock } from './ContactBlock'
 import { EASE } from '../lib/ease'
@@ -42,6 +43,7 @@ function useNavTheme() {
 export function Nav({ visible }: { visible: boolean }) {
   const [open, setOpen] = useState(false)
   const theme = useNavTheme()
+  const home = useRoute().path === '/' ? '#top' : '/'
 
   useEffect(() => {
     if (!open) return
@@ -55,9 +57,10 @@ export function Nav({ visible }: { visible: boolean }) {
   }, [open])
 
   const go = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    setOpen(false)
+    // links to the other page are left to the router
     if (!href.startsWith('#')) return
     e.preventDefault()
-    setOpen(false)
     smooth.start()
     requestAnimationFrame(() => smooth.scrollTo(href))
   }
@@ -76,7 +79,7 @@ export function Nav({ visible }: { visible: boolean }) {
           ))}
         </div>
         <div className="nav__bar container">
-          <a className="nav__logo" href="#top" onClick={(e) => go(e, '#top')} aria-label={`${brand.name} — home`}>
+          <a className="nav__logo" href={home} onClick={(e) => go(e, home)} aria-label={`${brand.name} — home`}>
             {brand.wordmark}
           </a>
           <button
